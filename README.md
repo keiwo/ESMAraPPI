@@ -1,7 +1,7 @@
-This repository contains relavant information of our research artical '*Pre-trained protein language model sheds new light on the prediction of Arabidopsis protein-protein interactions*'.
+This repository contains relavant information of our research artical '*Pre-trained protein language models shed new light on the prediction of Arabidopsis protein-protein interactions*'.
 
 ### Protein sequence embedding
-Please follow this instruction (https://github.com/facebookresearch/esm) to extracts embeddings from the ESM or use the pickle files we provide.
+Please follow this instruction (https://github.com/facebookresearch/esm) to extracts embeddings from the ESM or use the pickle file we provide.
 ### Prepare Python runtime environment
 We provide a file of conda virtual environment for you to refer.
 ### Run the code
@@ -27,7 +27,9 @@ We express our thanks to these researches.
 >
 >Szymborski J, Emad A. RAPPPID: towards generalizable protein interaction prediction with AWD-LSTM twin networks. Bioinformatics. 2022 Aug 10;38(16):3958-3967.
 >
->Zheng J, Yang X, Huang Y, Yang S, Wuchty S, Zhang Z. Deep learning-assisted prediction of protein-protein interactions in Arabidopsis thaliana. Plant J. 2023 May;114(4):984-994. 
+>Zhao J, Lei Y, Hong J, Zheng C, Zhang L. AraPPINet: An Updated Interactome for the Analysis of Hormone Signaling Crosstalk in *Arabidopsis thaliana*. Front Plant Sci. 2019 Jul 5;10:870.
+>
+>Zheng J, Yang X, Huang Y, Yang S, Wuchty S, Zhang Z. Deep learning-assisted prediction of protein-protein interactions in *Arabidopsis thaliana*. Plant J. 2023 May;114(4):984-994. 
 
 
 
