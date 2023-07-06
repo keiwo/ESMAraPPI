@@ -1,4 +1,4 @@
-This repository contains relavant information of our research artical '*Pre-trained protein language model sheds new light on the prediction of Arabidopsis protein-protein interactions*'
+This repository contains relavant information of our research artical '*Pre-trained protein language model sheds new light on the prediction of Arabidopsis protein-protein interactions*'.
 
 ### Protein sequence embedding
 Please follow this instruction (https://github.com/facebookresearch/esm) to extracts embeddings from the ESM or use the pickle files we provide.
