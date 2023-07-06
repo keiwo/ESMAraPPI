@@ -17,10 +17,10 @@ class MLP(nn.Module):
         self.l4 = nn.Linear(128, 16)
         self.l5 = nn.Linear(16, 1)
         self.sig = nn.Sigmoid()
-    def forward(self, input_sentence):
-        embedding0 = input_sentence[:, 0, :].reshape(-1,1280)
-        embedding1 = input_sentence[:, 1, :].reshape(-1,1280)
-        x = torch.mul(embedding0.reshape(-1,1280), embedding1.reshape(-1,1280))
+    def forward(self, input):
+        input1 = input[:, 0, :].reshape(-1,1280)
+        input2 = input[:, 1, :].reshape(-1,1280)
+        x = torch.mul(input1.reshape(-1,1280), input2.reshape(-1,1280))
         x = F.relu(self.l1(x))
         x = F.relu(self.l2(x))
         x = F.relu(self.l3(x))
@@ -85,7 +85,7 @@ for i, j in c3Id:
 c3Emdedding = torch.stack(c3Emdedding, dim = 0)
 
 # Training
-EPOCH = 1
+EPOCH = 40
 LR = 0.001
 model = MLP()
 model.cuda()
