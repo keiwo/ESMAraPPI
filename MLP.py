@@ -29,13 +29,14 @@ class MLP(nn.Module):
         return x
 
 # Load ESM embedding
-with open("features/esm1b_t33_650M_UR50S.pkl","rb") as f:
-	esm_embed = pickle.load(f)
+with open("esm1b_t33_650M_UR50S.pkl","rb") as f:
+	embeddingDict = pickle.load(f)
+
 
 # Data preprocessing
-idPairTrain = np.loadtxt('datasets/c1Train.txt', dtype = str, usecols = (0, 1, 2))
-idPairc2 = np.loadtxt('datasets/c2Test.txt', dtype = str, usecols = (0, 1, 2))
-idPairc3 = np.loadtxt('datasets/c3Test.txt', dtype = str, usecols = (0, 1, 2))
+idPairTrain = np.loadtxt("c1Train.txt", dtype = str, usecols = (0, 1, 2))
+idPairc2 = np.loadtxt("c2Test.txt", dtype = str, usecols = (0, 1, 2))
+idPairc3 = np.loadtxt("c3Test.txt", dtype = str, usecols = (0, 1, 2))
 
 # Train dataset
 trainId = []
@@ -48,7 +49,7 @@ trainLabelArray = np.array(trainLabel)
 
 embedding = []
 for i, j in trainIdArray:
-    embedding.append(torch.stack([esm_embed[i], esm_embed[j]], dim = 0))
+    embedding.append(torch.stack([embeddingDict[i], embeddingDict[j]], dim = 0))
 
 Xtrain = torch.stack(embedding, dim = 0)
 ytrain = torch.tensor(trainLabelArray, dtype=torch.long)   
@@ -66,7 +67,7 @@ c2Label = np.array(c2Label)
 
 c2Emdedding = []
 for i, j in c2Id:
-    c2Emdedding.append(torch.stack([esm_embed[i], esm_embed[j]], dim = 0))
+    c2Emdedding.append(torch.stack([embeddingDict[i], embeddingDict[j]], dim = 0))
 c2Emdedding = torch.stack(c2Emdedding, dim = 0)
 
 # C3 Test dataset
@@ -80,11 +81,11 @@ c3Label = np.array(c3Label)
 
 c3Emdedding = []            
 for i, j in c3Id:
-    c3Emdedding.append(torch.stack([esm_embed[i], esm_embed[j]], dim = 0))
+    c3Emdedding.append(torch.stack([embeddingDict[i], embeddingDict[j]], dim = 0))
 c3Emdedding = torch.stack(c3Emdedding, dim = 0)
 
 # Training
-EPOCH = 40
+EPOCH = 1
 LR = 0.001
 model = MLP()
 model.cuda()
@@ -92,7 +93,7 @@ optimizer = torch.optim.Adam(model.parameters(), lr=LR)
 loss_func = nn.BCELoss()
 loss_func.cuda()
 
-print('Training Starts')
+print("Training Starts")
 start2 = time.time()
 for epoch in range(1,EPOCH+1):
     start = time.time()
@@ -108,17 +109,16 @@ for epoch in range(1,EPOCH+1):
         end = time.time()
         tmp = len(trainLoader)/width
         if step % tmp < 1:
-            print(f'\rEpoch:{epoch} [{"-"*(int(step/tmp) + 1)}->{" "*(width - 1 -int(step/tmp))}][{(end-start):.1f}s][{(end-start2):.0f}s]  ', end='')
+            print(f'\rEpoch:{epoch} [{"-"*(int(step/tmp) + 1)}->{" "*(width - 1 -int(step/tmp))}][{(end-start):.1f}s][{(end-start2):.0f}s]  ', end="")
+print()
 
 # Evaluation       
 with torch.no_grad():
-    model.to('cpu')
+    model.to("cpu")
     c2LabelPred = model(c2Emdedding).tolist()
-    print(average_precision_score(c2Label, c2LabelPred), roc_auc_score(c2Label, c2LabelPred))
+    print("C2 test")
+    print("PR:", average_precision_score(c2Label, c2LabelPred), "ROC:", roc_auc_score(c2Label, c2LabelPred))
     
+    print("C3 test")
     c3LabelPred = model(c3Emdedding).tolist()
-    print(average_precision_score(c3Label, c3LabelPred), roc_auc_score(c3Label, c3LabelPred))
-
-
-
-
+    print("PR:", average_precision_score(c3Label, c3LabelPred), "ROC:", roc_auc_score(c3Label, c3LabelPred))
