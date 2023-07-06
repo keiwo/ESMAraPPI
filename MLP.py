@@ -86,16 +86,15 @@ c3Emdedding = torch.stack(c3Emdedding, dim = 0)
 
 # Training
 EPOCH = 40
-LR = 0.001
 model = MLP()
 model.cuda()
-optimizer = torch.optim.Adam(model.parameters(), lr=LR)
+optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 loss_func = nn.BCELoss()
 loss_func.cuda()
 
 print("Training Starts")
 start2 = time.time()
-for epoch in range(1,EPOCH+1):
+for epoch in range(EPOCH):
     start = time.time()
     for step, (batch_x, batch_y) in enumerate(trainLoader):        
         batch_x = batch_x.cuda()
@@ -109,7 +108,7 @@ for epoch in range(1,EPOCH+1):
         end = time.time()
         tmp = len(trainLoader)/width
         if step % tmp < 1:
-            print(f'\rEpoch:{epoch} [{"-"*(int(step/tmp) + 1)}->{" "*(width - 1 -int(step/tmp))}][{(end-start):.1f}s][{(end-start2):.0f}s]  ', end="")
+            print(f'\rEpoch:{epoch+1} [{"-"*(int(step/tmp) + 1)}->{" "*(width - 1 -int(step/tmp))}][{(end-start):.1f}s][{(end-start2):.0f}s]  ', end="")
 print()
 
 # Evaluation       
