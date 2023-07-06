@@ -6,7 +6,7 @@ Please follow this instruction (https://github.com/facebookresearch/esm) to extr
 We provide a file of conda virtual environment for you to refer.
 #### Run the code
 ```
-python 
+python MLP.py
 ```
 #### Acknowledgment
 We express our thanks to this researches.
