@@ -1,4 +1,4 @@
-This repository contains codes, datasets and other relavant information for pur research artical '*Pre-trained protein language model sheds new light on the prediction of Arabidopsis protein-protein interactions*'
+This repository contains relavant information od our research artical '*Pre-trained protein language model sheds new light on the prediction of Arabidopsis protein-protein interactions*'
 
 ### Protein sequence embedding
 Please follow this instruction (https://github.com/facebookresearch/esm) to extracts embeddings from the ESM or use the pickle files we provide.
@@ -9,7 +9,7 @@ We provide a file of conda virtual environment for you to refer.
 python MLP.py
 ```
 ### Acknowledgment
-We express our thanks to this researches.
+We express our thanks to these researches.
 
 >Alley EC, Khimulya G, Biswas S, AlQuraishi M, Church GM. Unified rational protein engineering with sequence-based deep representation learning. Nat Methods. 2019 Dec;16(12):1315-1322.
 >
@@ -26,6 +26,9 @@ We express our thanks to this researches.
 >Song B, Luo X, Luo X, Liu Y, Niu Z, Zeng X. Learning spatial structures of proteins improves protein-protein interaction prediction. Brief Bioinform. 2022 Mar 10;23(2):bbab558.
 >
 >Szymborski J, Emad A. RAPPPID: towards generalizable protein interaction prediction with AWD-LSTM twin networks. Bioinformatics. 2022 Aug 10;38(16):3958-3967.
+>
+>Zheng J, Yang X, Huang Y, Yang S, Wuchty S, Zhang Z. Deep learning-assisted prediction of protein-protein interactions in Arabidopsis thaliana. Plant J. 2023 May;114(4):984-994. 
+
 
 
 
