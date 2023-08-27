@@ -3,7 +3,7 @@ This repository contains relavant information of our research artical '*Pre-trai
 ### Protein sequence embedding
 Please follow this instruction (https://github.com/facebookresearch/esm) to extracts embeddings from the ESM or use the pickle file we provide.
 ### Prepare Python runtime environment
-We provide a file of conda virtual environment for you to refer.
+We provide a file of [conda virtual environment](https://github.com/keiwo/ESM_Ara_PPIs/blob/main/environment.yml) for you to refer.
 ### Run the code
 ```
 python MLP.py
