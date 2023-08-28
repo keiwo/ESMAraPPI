@@ -1,15 +1,15 @@
 This repository contains relavant information of our research artical '*Pre-trained protein language models shed new light on the prediction of Arabidopsis protein-protein interactions*'.
 
-### Prepare Python runtime environment
-To reproduce our results, we provide a file of [conda virtual environment](https://github.com/keiwo/ESM_Ara_PPIs/blob/main/environment.yml) for you to refer.
-### Run the code
-```
-python MLP.py
-```
+### Reproduce results
+We provide a file of [conda virtual environment](https://github.com/keiwo/ESM_Ara_PPIs/blob/main/environment.yml) for you to refer via `conda env create -f environment.yml`. After the Python environment is ready, you can run the script `python MLP.py` in terminal and it use GPU default.
 
-### Protein sequence embedding
-Please follow this instruction (https://github.com/facebookresearch/esm) to extracts embeddings from the ESM or use the pickle file we provide.
-
+### Use data youself
+#### Data format
+For training and testing datasets, you need to have protein pair and their label seperated by tab character like `protein1	protein2	label`. Please note that ESM only recived protein sequnces less than 1022 when we used before and things may have changed right now.
+#### Sequence embedding
+Please follow [this instruction](https://github.com/facebookresearch/esm) to extracts embeddings from ESM. After that, you should extract embedding from raw result and integrate all embeddings into Python dictionary like `{"protein_name": torch.tensor()}`. Then save it as `.pkl` file.
+### Train and test
+Replace the coresponding file names in `MLP.py` with yours and you will get PR value of testing dataset after running the script.
 ### Acknowledgment
 We express our thanks to these researches.
 
