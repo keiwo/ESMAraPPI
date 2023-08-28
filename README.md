@@ -5,7 +5,7 @@ We provide a file of [conda virtual environment](https://github.com/keiwo/ESM_Ar
 
 ### Use data yourself
 #### Data format
-For training and testing datasets, you need to have protein pair and their label separated by tab character like `protein1 protein2 label`. Please note that ESM only received protein sequences less than 1022 when we used before and things may have changed right now.
+For training and testing datasets, you need to have protein pair and their label separated by tab character like `protein1 protein2 label`. Please note that ESM only received protein sequences less than 1022 when we used before, and things may have changed right now.
 #### Sequence embedding
 Please follow [this instruction](https://github.com/facebookresearch/esm) to extracts embeddings from ESM. After that, you should extract embedding from raw result and integrate all embeddings into Python dictionary like `{"protein_name": torch.tensor()}`. Then save it as `.pkl` file.
 ### Train and test
