@@ -1,4 +1,4 @@
-This repository contains relevant information of our research article '*Pre-trained protein language models shed new light on the prediction of Arabidopsis protein-protein interactions*'.
+This repository contains relevant information of our research article [*Pre-trained protein language model sheds new light on the prediction of Arabidopsis protein–protein interactions*](https://doi.org/10.1186/s13007-023-01119-6).
 
 ### Reproduce results quickly
 We provide a file of [conda virtual environment](https://github.com/keiwo/ESM_Ara_PPIs/blob/main/environment.yml) for you to refer via `conda env create -f environment.yml`. After the Python environment is ready, you can run the script `python MLP.py` in terminal and it use GPU default.
