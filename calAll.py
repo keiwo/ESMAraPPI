@@ -105,4 +105,4 @@ with open('tAll.txt', 'w') as f:
             for j in range(128):
 
                 f.write(f'{XtestBatchId[j][0]}\t{XtestBatchId[j][1]}\t{output[j][0]:0.8f}\n')
-            print(f'\r{i}/2723222 batch | {(i/2723222*100):.2f}% | {(time.time()-start):.1f}s', end="")                                  
+            print(f'\r{i}/2723222 batches | {(i/2723222*100):.2f}% | {(time.time()-start):.1f}s', end="")                                  
