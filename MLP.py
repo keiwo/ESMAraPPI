@@ -117,7 +117,13 @@ with torch.no_grad():
     c2LabelPred = model(c2Emdedding).tolist()
     print("C2 test")
     print("PR:", average_precision_score(c2Label, c2LabelPred), "ROC:", roc_auc_score(c2Label, c2LabelPred))
-    
+    with open("c2Pred.txt", "w") as f:
+        for p1, p2, label, pred in zip(c2Id[:, 0], c2Id[:, 1], c2Label, c2LabelPred):
+            f.write(f"{p1}\t{p2}\t{label}\t{pred[0]}\n")
+
     print("C3 test")
     c3LabelPred = model(c3Emdedding).tolist()
     print("PR:", average_precision_score(c3Label, c3LabelPred), "ROC:", roc_auc_score(c3Label, c3LabelPred))
+    with open("c3Pred.txt", "w") as f:
+        for p1, p2, label, pred in zip(c3Id[:, 0], c3Id[:, 1], c3Label, c3LabelPred):
+            f.write(f"{p1}\t{p2}\t{label}\t{pred[0]}\n")
